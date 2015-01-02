@@ -2,57 +2,62 @@
 
 \documentclass[12pt,a4paper]{report}
 
-\usepackage[DIV=15]{typearea}
-\usepackage[utf8]{inputenc}
-\usepackage{mathtools}
-\usepackage{amsmath}
-\usepackage{multicol}
-\usepackage[usenames,dvipsnames]{xcolor}
-\usepackage{fancyhdr}
-\usepackage{caption}
-\usepackage{enumerate}
-\usepackage{float}
-\usepackage{listings}
-\usepackage{tikz}
-\usepackage{gnuplot-lua-tikz}
-\usepackage{embedfile}
+\usepackage[DIV=15]{typearea}		% Typearea size, note DIV = 1-15
+\usepackage[utf8]{inputenc}		% For some nonascii
+\usepackage{mathtools}			% I need this, just don't know why
+\usepackage{amsmath}			% \gather ...
+\usepackage{multicol}			% For multiple columns
+\usepackage[usenames,dvipsnames]{xcolor}% Color names, must include before tikz
+\usepackage{fancyhdr}			% Headers
+\usepackage{caption}			% Figure captions
+\usepackage{enumerate}			% I don't know
+\usepackage{float}			% Graphs and pictures
+\usepackage{listings}			% Source higlight and frame
+\usepackage{tikz}			% Scalable plots
+\usepackage{gnuplot-lua-tikz}		% Tikz gnuplot compatibility
+\usepackage{embedfile}			% Embedding files into final document
+
+\usepackage{lipsum}
 
 %% Add source files to final document
 \embedfile{template.tex}
 
-% For faster processing, load Matlab syntax for listings
-\lstloadlanguages{Octave}%
-\lstset{language=Octave,
-	frame=single,
-	basicstyle=\small\ttfamily,
-	keywordstyle=[1]\color{Orchid}\bf,
-	keywordstyle=[2]\color{Brown},
-	keywordstyle=[3]\color{Blue},
-	identifierstyle=\color{BlueViolet},
-	%commentstyle=\usefont{T1}{pcr}{m}{sl}\color{OliveGreen}\small,
-	stringstyle=\color{MidnightBlue},
-	showstringspaces=false,
-	tabsize=8,
-	%%% Put standard Octave functions not included in the default
-	%%% language here
-	morekeywords={},
-	%%% Put Octave function parameters here
-	morekeywords=[2]{},
-	%%% Put user defined functions here
-	morekeywords=[3]{},
-	numbers=left,                           % Line numbers on left
-	firstnumber=1,                          % Line numbers start with line 1
-	numberstyle=\tiny\color{Blue},          % Line numbers are blue
-	stepnumber=5                            % Line numbers go in steps of 5
-	}
+\lstloadlanguages{Octave}	% For faster processing, load <lang> syntax
+\lstset{%
+	language=Octave,			% Use this language
+	basicstyle=\small\ttfamily,		% Typeface, font
+	firstnumber=1,				% Start counting at
+	frame=single,				% Frame style
+	identifierstyle=\color{BlueViolet},	% Identifiers color
+	keywordstyle=[1]\color{Orchid}\bf,	% Native functions color
+	keywordstyle=[2]\color{Brown},		% Function arguments color
+	keywordstyle=[3]\color{Blue},		% User functions color
+	morekeywords={},			% Add standard functions
+	morekeywords=[2]{},			% Add function parameters
+	morekeywords=[3]{},			% Add user defined functions
+	numbers=left,				% Line numbers placement
+	numberstyle=\tiny\color{Blue},		% Line numbers style
+	showstringspaces=false,			% No marks in string spaces
+	stepnumber=5				% Line numbers go in step
+	stringstyle=\color{MidnightBlue},	% Strings color
+	tabsize=8,				% Tabs have this much spaces
+	% Comment style
+	commentstyle=\usefont{T1}{pcr}{m}{sl}\color{OliveGreen}\small,
+}
 
 %% Header and fotter
 \pagestyle{fancy}
 \chead{\textsc{Header}}
+\cfoot{}                                                                %
+\rfoot{\thepage\ /\ \protect\pageref{LastPage}}
 
-\begin{document}
-\begin{titlepage}
+%% User defined commands %%
 \newcommand\myhlinewotikz{\noindent\rule[.35em]{0.95\linewidth}{.4pt}\par}
+
+%%%% ---It begins here--- %%%%
+\begin{document}
+
+\begin{titlepage}
 \center
 
 \begin{flushleft} \large
@@ -72,25 +77,29 @@
 \begin{minipage}{0.5\textwidth}
 \begin{flushleft} \large
 \emph{Autor:}\\
-Asmir Abdulahović
+Ime Prezime
 \end{flushleft}
 \end{minipage}%
 \begin{minipage}{0.5\textwidth}
 \begin{flushright} \large
 \emph{Prof:} \\
-dr.sci. Profime Profprez
+Ime Prezime
 \end{flushright}
 \end{minipage}
 
 \end{titlepage}
 
-
+\lipsum[3-100]
+\label{LastPage}
 \end{document}
+
+%% Input listing
+%\lstinputlisting[firstline=4]{listing.code}
 
 %% Include figure
 % \begin{figure}[H]
 % 	\centering
 % 	% \includegraphics[width=\textwidth]{druga.png}
 % 	%\resizebox{\textwidth}{!}{\input{zad2.tikz}}
-% 	\caption*{Slika 2: Poklapanje sa originalnom funkcijom}
+% 	\caption*{Some text}
 % \end{figure}
