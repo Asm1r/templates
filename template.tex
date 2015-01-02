@@ -1,0 +1,96 @@
+% Template asmir [at] archlinux [dot] us
+
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[DIV=15]{typearea}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{gnuplot-lua-tikz}
+\usepackage{embedfile}
+
+%% Add source files to final document
+\embedfile{template.tex}
+
+% For faster processing, load Matlab syntax for listings
+\lstloadlanguages{Octave}%
+\lstset{language=Octave,
+	frame=single,
+	basicstyle=\small\ttfamily,
+	keywordstyle=[1]\color{Orchid}\bf,
+	keywordstyle=[2]\color{Brown},
+	keywordstyle=[3]\color{Blue},
+	identifierstyle=\color{BlueViolet},
+	%commentstyle=\usefont{T1}{pcr}{m}{sl}\color{OliveGreen}\small,
+	stringstyle=\color{MidnightBlue},
+	showstringspaces=false,
+	tabsize=8,
+	%%% Put standard Octave functions not included in the default
+	%%% language here
+	morekeywords={},
+	%%% Put Octave function parameters here
+	morekeywords=[2]{},
+	%%% Put user defined functions here
+	morekeywords=[3]{},
+	numbers=left,                           % Line numbers on left
+	firstnumber=1,                          % Line numbers start with line 1
+	numberstyle=\tiny\color{Blue},          % Line numbers are blue
+	stepnumber=5                            % Line numbers go in steps of 5
+	}
+
+%% Header and fotter
+\pagestyle{fancy}
+\chead{\textsc{Header}}
+
+\begin{document}
+\begin{titlepage}
+\newcommand\myhlinewotikz{\noindent\rule[.35em]{0.95\linewidth}{.4pt}\par}
+\center
+
+\begin{flushleft} \large
+\textsc{\Large{Univerzitet u Tuzli\\Fakultet elektrotehnike}}
+\end{flushleft}
+
+\vspace{\stretch{1}}
+%\rule{\textwidth}{1pt}
+\myhlinewotikz
+\textsc{\LARGE{Glavni Naslov}}\par
+\vspace{3mm}
+\textsc{\LARGE{Podnaslov}}\par
+\myhlinewotikz
+
+\vspace{\stretch{2.5}}
+\noindent
+\begin{minipage}{0.5\textwidth}
+\begin{flushleft} \large
+\emph{Autor:}\\
+Asmir Abdulahović
+\end{flushleft}
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+\begin{flushright} \large
+\emph{Prof:} \\
+dr.sci. Profime Profprez
+\end{flushright}
+\end{minipage}
+
+\end{titlepage}
+
+
+\end{document}
+
+%% Include figure
+% \begin{figure}[H]
+% 	\centering
+% 	% \includegraphics[width=\textwidth]{druga.png}
+% 	%\resizebox{\textwidth}{!}{\input{zad2.tikz}}
+% 	\caption*{Slika 2: Poklapanje sa originalnom funkcijom}
+% \end{figure}
